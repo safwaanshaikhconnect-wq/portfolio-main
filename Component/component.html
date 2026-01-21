@@ -17,10 +17,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="../main.html" class="logo">Library</a>
+            <a href="../index.html" class="logo">Library</a>
             <div class="nav-breadcrumb">
                 <span>/</span>
-                <a href="../main.html">Portfolio</a>
+                <a href="../index.html">Portfolio</a>
                 <span>/</span>
                 <span>Components</span>
             </div>
@@ -32,7 +32,7 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <h1>Engineering Library</h1>
+        <h1 class="gradient-text">Engineering Library</h1>
         <p class="section-subtitle">Systematic UI components and patterns documented for scalability and visual
             consistency.</p>
     </header>
@@ -158,7 +158,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <a href="../main.html" class="logo">Library</a>
+            <a href="../index.html" class="logo">Library</a>
             <p style="color: var(--text-tertiary); font-size: 0.875rem;">System Documentation &bull; 2026</p>
             <span id="theme-label" style="font-size: 0.875rem; color: var(--text-tertiary);">Light Module</span>
         </div>
@@ -184,6 +184,59 @@
             themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
             themeLabel.textContent = theme === 'light' ? 'Standard Light' : 'Deep Dark';
         }
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add 3D tilt effect to cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+            });
+        });
+
+        // Animate progress bar on load
+        window.addEventListener('load', () => {
+            const progressFill = document.querySelector('.progress-fill');
+            if (progressFill) {
+                const width = progressFill.style.width;
+                progressFill.style.width = '0';
+                setTimeout(() => {
+                    progressFill.style.width = width;
+                }, 100);
+            }
+        });
     </script>
 </body>
 
