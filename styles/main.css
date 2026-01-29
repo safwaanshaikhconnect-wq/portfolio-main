@@ -1121,9 +1121,10 @@ footer {
     }
 
     .projects-grid,
+    .projects-grid-2,
     .skills-container,
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 
     .nav-links {
@@ -1132,6 +1133,11 @@ footer {
 
     .section {
         padding: 4rem 1rem;
+    }
+
+    #projects {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .hero-cta {
@@ -1173,5 +1179,67 @@ footer {
     .background-text {
         font-size: 4rem;
         right: 5%;
+    }
+
+    /* Project Cards Mobile Optimization */
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .project-image {
+        height: 180px;
+        margin-bottom: 1.25rem;
+    }
+
+    .project-title {
+        font-size: var(--type-lg);
+    }
+
+    .project-description {
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    .project-tags {
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .tag {
+        font-size: 10px;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .section-title {
+        font-size: var(--type-2xl);
+        margin-bottom: 2.5rem;
+    }
+
+    /* Experience Cards Mobile */
+    .experience-card {
+        padding: 1.25rem;
+    }
+
+    .experience-title {
+        font-size: var(--type-lg);
+    }
+
+    .experience-description {
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    /* CTA Section Mobile */
+    .cta-section {
+        padding: 4rem 1.5rem;
+        margin: 2rem auto;
+    }
+
+    .cta-section .cta-title {
+        font-size: var(--type-2xl);
+    }
+
+    .cta-section .cta-description {
+        font-size: var(--type-base);
     }
 }
